@@ -1,16 +1,24 @@
 {
   "name": "php-is-dead-long-live-php",
   "version": "1.0.0",
-  "description": "",
+  "description": "Slides for my talk 'PHP is dead.. Long live PHP'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages-deploy",
+    "clean-source": "rimraf README.md src webroot package.json"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alexander Lichter <hello@lichter.io>",
   "license": "ISC",
   "dependencies": {
     "reveal.js": "^3.6.0",
     "tailwindcss": "^0.2.2"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "post": [
+      "clean-source"
+    ],
+    "noprompt": false
   }
 }
