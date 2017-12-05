@@ -4,18 +4,28 @@
   "description": "Slides for my talk 'PHP is dead.. Long live PHP'",
   "main": "index.js",
   "scripts": {
+    "build": "rimraf dist && webpack",
     "deploy": "gh-pages-deploy",
-    "clean-source": "rimraf README.md src webroot package.json"
+    "clean-source": "rimraf src node_modules package.json package-lock.json"
   },
   "keywords": [],
   "author": "Alexander Lichter <hello@lichter.io>",
   "license": "ISC",
   "dependencies": {
+    "copy-webpack-plugin": "^4.2.3",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
     "reveal.js": "^3.6.0",
-    "tailwindcss": "^0.2.2"
+    "style-loader": "^0.19.0",
+    "tailwindcss": "^0.2.2",
+    "webpack": "^3.10.0"
   },
   "gh-pages-deploy": {
     "staticpath": "dist",
+    "prep": [
+      "build"
+    ],
     "post": [
       "clean-source"
     ],
