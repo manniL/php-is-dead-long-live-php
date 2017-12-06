@@ -834,7 +834,6 @@
 
         <section>
             <h1 class="text-php-light">Conclusion</h1>
-
             <ul>
                 <li class="fragment">Use PHP as a 🔨 in your tool belt</li>
                 <li class="fragment">PHP does not suck <span class="fragment">(as much as everyone think)!</span></li>
@@ -881,5 +880,27 @@
         </section>
     </div>
 </div>
+<script src="lib/js/head.min.js"></script>
+<script src="lib/js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    dependencies: [
+      {src: 'plugin/markdown/marked.js'},
+      {src: 'plugin/markdown/markdown.js'},
+      {src: 'plugin/notes/notes.js', async: true},
+      {
+        src: 'plugin/highlight/highlight.js',
+        async: true,
+        callback: function () { hljs.initHighlightingOnLoad() }
+      }
+    ],
+    history: true,
+    slideNumber: true,
+  })
+</script>
 </body>
 </html>

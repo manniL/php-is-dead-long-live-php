@@ -13,21 +13,53 @@ module.exports = {
     filename: '[name].[hash].js'
   },
   externals: {
-    'reveal': 'Reveal'
+    'reveal': 'Reveal',
+    'Reveal': 'Reveal',
+    'hljs': 'hljs'
   },
   module: {
     loaders: [
-      {test: /\.css$/, loaders: ['style-loader', 'css-loader']},
-      {test: /\.(eot|svg|ttf|woff|woff2)$/, loaders: ['file-loader']}
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loaders: ['file-loader']
+      }
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      reveal: 'Reveal',
+      Reveal: 'Reveal',
+      'window.Reveal': 'Reveal',
+    }),
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    new CopyWebpackPlugin([{
-      from: 'assets/',
-      to: 'assets/'
-    }])
+    new CopyWebpackPlugin([
+      {
+        from: 'assets/',
+        to: 'assets/'
+      },
+      {
+        from: '../node_modules/reveal.js/lib/',
+        to: 'lib/'
+      },
+      {
+        from: '../node_modules/reveal.js/js/',
+        to: 'lib/js/'
+      },
+      {
+        from: '../node_modules/reveal.js/plugin/',
+        to: 'plugin/'
+      }
+    ])
   ]
 }
