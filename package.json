@@ -29,15 +29,5 @@
     "style-loader": "^0.19.0",
     "tailwindcss": "^0.2.2",
     "webpack": "^3.10.0"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "dist",
-    "prep": [
-      "build"
-    ],
-    "post": [
-      "clean-source"
-    ],
-    "noprompt": false
   }
 }
