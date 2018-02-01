@@ -1,0 +1,908 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>PHP is dead - Long live PHP</title>
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2 class="normal-case mb-8">
+                <span class="text-php-light">PHP</span> is <span class="">DEAD</span> - Long live <span
+                    class="text-php-light">PHP</span>
+            </h2>
+            <h2 class="text-base"></h2>
+            <h4 class="text-sm text-grey"></h4>
+        </section>
+
+        <section>
+            <h2 class="normal-case mb-8">
+                About me
+            </h2>
+            <div class="flex flex-row justify-around items-center fragment fade-left mx-auto">
+                <div class="flex flex-col items-center mx-auto">
+                    <img src="assets/me.jpg" width="255" height="255"
+                         class="rounded-full border-solid border-4 border-grey-light shadow-lg mb-4">
+                    <div class="flex flex-row justify-between text-sm text-green-lightest">
+                        <a href="https://github.com/manniL" target="blank" rel="noreferrer noopener nofollow"
+                           class="text-center no-underline rounded text-green-lightest hover:text-green flex flex-row items-center mx-2">
+                            <svg class="inline-block w-8 h-8 text-white fill-current" viewBox="0 100 1792 1792"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"/>
+                            </svg>
+                            <span class="ml-1">manniL</span>
+                        </a>
+                        <a href="https://twitter.com/TheAlexLichter" target="blank" rel="noreferrer noopener nofollow"
+                           class="text-center no-underline rounded text-blue-lightest hover:text-green flex flex-row items-stretch mx-2">
+                            <svg class="inline-block w-8 h-8 text-blue-light fill-current" viewBox="0 -100 1792 1792"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/>
+                            </svg>
+                            <span class="ml-1">TheAlexLichter</span>
+                        </a>
+                    </div>
+                    <a href="https://lichter.io" target="blank" rel="noreferrer noopener nofollow"
+                       class="text-center text-sm no-underline rounded text-blue-lightest hover:text-green flex flex-row items-stretch mx-2">
+                        <svg class="inline-block w-8 h-10 text-red-light fill-current" width="1792" height="1792"
+                             viewBox="0 50 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5-103 385.5-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103zm274 521q-2 1-9.5 9.5t-13.5 9.5q2 0 4.5-5t5-11 3.5-7q6-7 22-15 14-6 52-12 34-8 51 11-2-2 9.5-13t14.5-12q3-2 15-4.5t15-7.5l2-22q-12 1-17.5-7t-6.5-21q0 2-6 8 0-7-4.5-8t-11.5 1-9 1q-10-3-15-7.5t-8-16.5-4-15q-2-5-9.5-11t-9.5-10q-1-2-2.5-5.5t-3-6.5-4-5.5-5.5-2.5-7 5-7.5 10-4.5 5q-3-2-6-1.5t-4.5 1-4.5 3-5 3.5q-3 2-8.5 3t-8.5 2q15-5-1-11-10-4-16-3 9-4 7.5-12t-8.5-14h5q-1-4-8.5-8.5t-17.5-8.5-13-6q-8-5-34-9.5t-33-.5q-5 6-4.5 10.5t4 14 3.5 12.5q1 6-5.5 13t-6.5 12q0 7 14 15.5t10 21.5q-3 8-16 16t-16 12q-5 8-1.5 18.5t10.5 16.5q2 2 1.5 4t-3.5 4.5-5.5 4-6.5 3.5l-3 2q-11 5-20.5-6t-13.5-26q-7-25-16-30-23-8-29 1-5-13-41-26-25-9-58-4 6-1 0-15-7-15-19-12 3-6 4-17.5t1-13.5q3-13 12-23 1-1 7-8.5t9.5-13.5.5-6q35 4 50-11 5-5 11.5-17t10.5-17q9-6 14-5.5t14.5 5.5 14.5 5q14 1 15.5-11t-7.5-20q12 1 3-17-4-7-8-9-12-4-27 5-8 4 2 8-1-1-9.5 10.5t-16.5 17.5-16-5q-1-1-5.5-13.5t-9.5-13.5q-8 0-16 15 3-8-11-15t-24-8q19-12-8-27-7-4-20.5-5t-19.5 4q-5 7-5.5 11.5t5 8 10.5 5.5 11.5 4 8.5 3q14 10 8 14-2 1-8.5 3.5t-11.5 4.5-6 4q-3 4 0 14t-2 14q-5-5-9-17.5t-7-16.5q7 9-25 6l-10-1q-4 0-16 2t-20.5 1-13.5-8q-4-8 0-20 1-4 4-2-4-3-11-9.5t-10-8.5q-46 15-94 41 6 1 12-1 5-2 13-6.5t10-5.5q34-14 42-7l5-5q14 16 20 25-7-4-30-1-20 6-22 12 7 12 5 18-4-3-11.5-10t-14.5-11-15-5q-16 0-22 1-146 80-235 222 7 7 12 8 4 1 5 9t2.5 11 11.5-3q9 8 3 19 1-1 44 27 19 17 21 21 3 11-10 18-1-2-9-9t-9-4q-3 5 .5 18.5t10.5 12.5q-7 0-9.5 16t-2.5 35.5-1 23.5l2 1q-3 12 5.5 34.5t21.5 19.5q-13 3 20 43 6 8 8 9 3 2 12 7.5t15 10 10 10.5q4 5 10 22.5t14 23.5q-2 6 9.5 20t10.5 23q-1 0-2.5 1t-2.5 1q3 7 15.5 14t15.5 13q1 3 2 10t3 11 8 2q2-20-24-62-15-25-17-29-3-5-5.5-15.5t-4.5-14.5q2 0 6 1.5t8.5 3.5 7.5 4 2 3q-3 7 2 17.5t12 18.5 17 19 12 13q6 6 14 19.5t0 13.5q9 0 20 10.5t17 19.5q5 8 8 26t5 24q2 7 8.5 13.5t12.5 9.5l16 8 13 7q5 2 18.5 10.5t21.5 11.5q10 4 16 4t14.5-2.5 13.5-3.5q15-2 29 15t21 21q36 19 55 11-2 1 .5 7.5t8 15.5 9 14.5 5.5 8.5q5 6 18 15t18 15q6-4 7-9-3 8 7 20t18 10q14-3 14-32-31 15-49-18 0-1-2.5-5.5t-4-8.5-2.5-8.5 0-7.5 5-3q9 0 10-3.5t-2-12.5-4-13q-1-8-11-20t-12-15q-5 9-16 8t-16-9q0 1-1.5 5.5t-1.5 6.5q-13 0-15-1 1-3 2.5-17.5t3.5-22.5q1-4 5.5-12t7.5-14.5 4-12.5-4.5-9.5-17.5-2.5q-19 1-26 20-1 3-3 10.5t-5 11.5-9 7q-7 3-24 2t-24-5q-13-8-22.5-29t-9.5-37q0-10 2.5-26.5t3-25-5.5-24.5q3-2 9-9.5t10-10.5q2-1 4.5-1.5t4.5 0 4-1.5 3-6q-1-1-4-3-3-3-4-3 7 3 28.5-1.5t27.5 1.5q15 11 22-2 0-1-2.5-9.5t-.5-13.5q5 27 29 9 3 3 15.5 5t17.5 5q3 2 7 5.5t5.5 4.5 5-.5 8.5-6.5q10 14 12 24 11 40 19 44 7 3 11 2t4.5-9.5 0-14-1.5-12.5l-1-8v-18l-1-8q-15-3-18.5-12t1.5-18.5 15-18.5q1-1 8-3.5t15.5-6.5 12.5-8q21-19 15-35 7 0 11-9-1 0-5-3t-7.5-5-4.5-2q9-5 2-16 5-3 7.5-11t7.5-10q9 12 21 2 8-8 1-16 5-7 20.5-10.5t18.5-9.5q7 2 8-2t1-12 3-12q4-5 15-9t13-5l17-11q3-4 0-4 18 2 31-11 10-11-6-20 3-6-3-9.5t-15-5.5q3-1 11.5-.5t10.5-1.5q15-10-7-16-17-5-43 12zm-163 877q206-36 351-189-3-3-12.5-4.5t-12.5-3.5q-18-7-24-8 1-7-2.5-13t-8-9-12.5-8-11-7q-2-2-7-6t-7-5.5-7.5-4.5-8.5-2-10 1l-3 1q-3 1-5.5 2.5t-5.5 3-4 3 0 2.5q-21-17-36-22-5-1-11-5.5t-10.5-7-10-1.5-11.5 7q-5 5-6 15t-2 13q-7-5 0-17.5t2-18.5q-3-6-10.5-4.5t-12 4.5-11.5 8.5-9 6.5-8.5 5.5-8.5 7.5q-3 4-6 12t-5 11q-2-4-11.5-6.5t-9.5-5.5q2 10 4 35t5 38q7 31-12 48-27 25-29 40-4 22 12 26 0 7-8 20.5t-7 21.5q0 6 2 16z"/>
+                        </svg>
+                        <span class="ml-1">lichter.io</span>
+                    </a>
+                </div>
+                <div class="mx-auto">
+                    <h3 class="mb-2 font-light">
+                        Alexander Lichter
+                    </h3>
+                    <ul class="text-sm">
+                        <li class="fragment fade-up">5th semester (Diploma)</li>
+                        <li class="fragment fade-up">wrote the jExamUpdates bot</li>
+                        <li class="fragment fade-up">held a PHP course last semester</li>
+                        <li class="fragment fade-up">PHP developer for ~5 years</li>
+                        <li class="fragment fade-up">self-employed since 2015</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fragment">
+                <img src="assets/developmint.png" class="border-0 bg-transparent shadow-none">
+            </div>
+            <aside class="notes">
+                Questions about Developmint afterwards<br>
+                Other questions: just ASK!
+            </aside>
+        </section>
+
+        <section>
+            <h2>It's time for a<span class="fragment">n <span class="text-php-light">Introduction round</span></span>
+            </h2>
+
+            <div>
+                <p class="fragment">To become more familiar with each other</p>
+                <ul>
+                    <li class="fragment">Introduce yourself (basic info)</li>
+                    <li class="fragment">Tell us your experience with PHP</li>
+                    <li class="fragment">Finally, present your opinion about that language</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Great!</h2>
+            <h3 class="normal-case">Let's look into PHP now</h3>
+        </section>
+
+        <section>
+            <h2 class="normal-case">Facts about <span class="text-php-light">PHP</span></h2>
+            <ul class="text-sm">
+                <li class="fragment">
+                    recursive acronym for <span class="text-green-lightest">PHP: Hypertext Preprocessor</span>
+                </li>
+                <li class="fragment">
+                    originally created by Rasmus Lerdorf in 1994
+                </li>
+                <li class="fragment">
+                    dynamically typed
+                </li>
+                <li class="fragment">
+                    used for major software products
+                </li>
+                <li class="fragment">
+                    interpreted language (no compilation)
+                </li>
+                <li class="fragment">
+                    has a market share of <span class="text-green-lightest">83%</span>
+                </li>
+            </ul>
+            <aside class="notes">
+                (Wordpress, Wikipedia/Wikimedia, Facebook)
+                SLACK backend!
+                No static types like Java
+            </aside>
+        </section>
+
+        <section>
+            <h2>What? 83% market share?</h2>
+            <div class="fragment flex flex-col items-center">
+                <img src="assets/market_share.png" class="mb-0">
+                <p class="text-xs mt-1">https://w3techs.com/technologies/history_overview/programming_language</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why?<br><span class="fragment normal-case">Well, we will answer that question later!</span></h2>
+        </section>
+
+        <section>
+            <h3>Before we dive into the pros and cons of PHP...<br>
+                ...let me tell you some <span class="underline">anecdotes</span></h3>
+            <div class="fragment">
+                <img src="assets/php_princess.jpg">
+                <p class="text-xs">https://toggl.com/programming-princess</p>
+            </div>
+            <aside class="notes">
+                <ul>
+                    <li>General "hate" against PHP</li>
+                    <li>
+                        <ul>
+                            <li>
+                                Suggested stack for rewriting a small web application<br>
+                            </li>
+                            <li>
+                                Currently it's in Ruby, but he want another language an stack
+                            </li>
+                            <li>
+                                Boss would blame him when he'd rewrite it in JS
+                            </li>
+                            <li>
+                                Suggestion: Rewrite with Lumen and PHP
+                            </li>
+                            <li>
+                                Answer: Ouuuh, that'd mean even more blame for me
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <img src="assets/most_disliked_2017.png" class="m-0 w-4/5">
+            <p class="text-xs">https://stackoverflow.blog/2017/10/31/disliked-programming-languages/</p>
+        </section>
+
+        <section>
+            <img src="assets/learning_to_code_comparison.jpg">
+            <p class="text-xs">http://blog.jasonwelter.com/wp-content/uploads/2011/05/learning_to_code.jpg</p>
+        </section>
+
+        <section>
+            <h2>PHP and ASCII</h2>
+            <h4 class="fragment">Who of you drank a coffee at the ASCII?</h4>
+            <h5 class="fragment">So, most of you know that all (hot) drinks are named by programming languages!</h5>
+        </section>
+
+        <section>
+            <h2>A little quiz</h2>
+            <h3 class="fragment">Which beverage is named PHP?</h3>
+
+            <ol class="list-upper-latin">
+                <li class="fragment">Chocochino</li>
+                <li class="fragment">Latte Macchiato</li>
+                <li class="fragment">Black Tea</li>
+            </ol>
+            <aside class="notes">
+                Repository for that!
+            </aside>
+        </section>
+
+        <section>
+            <h2 class="mb-1">Solution</h2>
+            <img src="assets/wastewater.png" class="fragment">
+            <aside class="notes">
+                <ol class="list-upper-latin">
+                    <li>Chocochino - Perl</li>
+                    <li>Latte Macchiato - Ruby</li>
+                    <li>Black Tea - Haskell</li>
+                </ol>
+            </aside>
+        </section>
+
+        <section>
+            <h3 class="normal-case">So, there must be a bunch of reasons why people hate PHP, right?</h3>
+            <h2 class="fragment">Well... kind of 😅</h2>
+        </section>
+
+        <section>
+            <h2 class="text-php-light">Flaws of PHP</h2>
+        </section>
+
+        <section>
+            <h3>DateTime ISO weirdness</h3>
+            <img class="fragment" src="assets/datetime_weirdness.png">
+        </section>
+
+        <section>
+            <h3>Ternary operators (intro)</h3>
+            <pre class="fragment"><code class="php p-1 m-0" data-trim data-noescape>
+                $condition = true;
+                $y = "Yey!";
+                $n = "Ney!";
+                $result;
+
+                //Normal if
+                if($condition){
+                    $result = $y;
+                } else {
+                    $result = $n;
+                }
+
+                //Ternary or "inline if"
+                $result = $condition ? $y : $n;
+            </code></pre>
+        </section>
+
+        <section>
+            <h4>So, what will be the outcome of the following code:</h4>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = FALSE ? "a" : FALSE ? "b" : "c";
+            </code></pre>
+
+            <h4 class="fragment normal-case">It's <span class="text-php-light">c</span>, because both conditions are
+                false</h4>
+        </section>
+
+        <section>
+            <h4>And with a slight change in code:</h4>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = TRUE ? "a" : FALSE ? "b" : "c";
+            </code></pre>
+
+            <h4 class="fragment normal-case">You think it's <span class="text-php-light">a</span> because the first
+                condition is true?</h4>
+            <h1 class="fragment normal-case">WRONG! IT'S <span class="text-php-light">b</span></h1>
+        </section>
+
+        <section data-background-image="https://media.giphy.com/media/njl60xjwgrkWY/giphy.gif"></section>
+
+        <section>
+            <h2>The reason</h2>
+
+            <h4 class="fragment normal-case">
+                Because Ternary operators are left-associative (unlike in every other language)
+            </h4>
+
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = TRUE ? "a" : FALSE ? "b" : "c";
+            </code></pre>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = (TRUE ? "a" : FALSE) ? "b" : "c";
+            </code></pre>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = "a" ? "b" : "c";
+            </code></pre>
+
+            <h2 class="fragment">Solution</h2>
+            <h4 class="fragment text-xs"><s>Just don't use PHP!</s></h4>
+            <h4 class="fragment">Just add parentheses!</h4>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                $result = TRUE ? "a" : (FALSE ? "b" : "c"); // "a"
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Unclear error messages</h3>
+
+            <div class="fragment">
+                <h5>Pre 5.4</h5>
+                <pre><code class="text-xs" data-trim
+                           data-noescape>Parse error: syntax error, unexpected T_PAAMAYIM_NEKUDOTAYIM</code></pre>
+            </div>
+            <h3 class="fragment">What?</h3>
+            <div class="fragment">
+                <pre><code data-trim class="text-xs"
+                           data-noescape>Parse error: syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM)</code></pre>
+                <h5>Post 5.4</h5>
+            </div>
+            <h3 class="fragment normal-case">Ah.. that makes a little more sense</h3>
+        </section>
+
+        <section>
+            <h3>Order of arguments</h3>
+            <img class="fragment" src="assets/array_map.png">
+            <img class="fragment" src="assets/array_filter.png">
+        </section>
+
+        <section>
+            <h3>Inconsistent function naming #1</h3>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                get_class(); gettype();
+                base64_encode(); urlencode();
+                htmlentities(); html_entity_decode();
+            </code></pre>
+        </section>
+
+        <section data-background-image="https://media.giphy.com/media/xT77Y36ijyuwn58bja/giphy.gif"></section>
+
+        <section>
+            <h3>Inconsistent function naming #2</h3>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                stream_copy_to_stream(); strtolower();
+                bin2hex(); deg2rad();
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>Inconsistent function naming #3</h3>
+            <pre class="fragment"><code class="php" data-trim data-noescape>
+                void usleep ( int $micro_seconds )
+                mixed microtime ([ bool $get_as_float = false ] )
+            </code></pre>
+        </section>
+
+        <section data-background-image="https://media.giphy.com/media/xT0BKCTVvHtg5u68X6/giphy.gif"></section>
+
+
+        <section>
+            <h3>Self-explaining method names..</h3>
+            <pre class="fragment my-8"><code class="php" data-trim data-noescape>
+                $string = "ThisIsAString";
+                $array = [];
+                parse_str($string, $array);
+            </code></pre>
+
+            <div class="fragment">
+                <h3>What could this method be used for?</h3>
+                <p class="text-sm">Hint: The array argument is optional</p>
+            </div>
+            <ol class="list-upper-latin">
+                <li class="fragment">Transform an HTML string to a text</li>
+                <li class="fragment">Return key/value pairs from a query string</li>
+                <li class="fragment">Remove special characters from an input string</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Solution</h3>
+            <pre class="fragment my-8"><code class="php" data-trim data-noescape>
+                $str = "first=value&arr[]=foo+bar&arr[]=baz";
+                parse_str($str);
+                echo $first;  // value
+                echo $arr[0]; // foo bar
+                echo $arr[1]; // baz
+
+                parse_str($str, $output);
+                echo $output['first'];  // value
+                echo $output['arr'][0]; // foo bar
+                echo $output['arr'][1]; // baz
+
+            </code></pre>
+            <h3 class="fragment">Answer B</h3>
+        </section>
+
+        <section>
+            <h3>OOP vs procedural</h3>
+            <p class="text-sm fragment">
+                While PHP meanwhile supports the OOP principle, this wasn't always the case. That's why
+                all APIs are present as procedural and object-oriented version.
+                <span class="fragment">Mixing these versions up can lead to..</span>
+            </p>
+        </section>
+
+        <section>
+            <h3>...Messy Code</h3>
+            <p class="text-sm fragment">
+                Because PHP is dynamically typed, code can get messy quite fast when not following some code styles,
+                rules, patterns and conventions. That's also one important thing to know about
+                <span class="text-php-light">PHP</span>
+            </p>
+        </section>
+
+        <section class="w-full h-full">
+           <pre class="w-full m-0 h-full"><code class="php w-full m-0 h-auto p-0 min-h-full text-xs" data-trim
+                                                data-noescape>
+            echo '&lt;h1&gt;New Users&lt;/h1&gt;';
+            $sql = "SELECT * FROM users ORDER BY date_registered";
+            $result = mysql_query($sql) or die(mysql_error()); echo '&lt;table class="my-table-class"&gt;';
+            while($row = mysql_fetch_assoc($result)){
+                echo '&lt;tr&gt;&lt;td&gt;' . $row['username'] . '&lt;/td&gt;&lt;td&gt;' . $row['date_registered'] . '&lt;/td&gt;&lt;/tr&gt;';
+            }
+            echo '&lt;/table&gt;';
+            function random_custom_function($var){
+                $var = $var + 1;
+                return '&lt;span style="font-weight:bold;"&gt;' . $var . '&lt;/span&gt;';
+            }
+            $sql = "SELECT * FROM table WHERE column = 'test'";
+            $result = mysql_query($sql) or die(mysql_error());
+            echo '&lt;div id="test"&gt;'; $i = 0;
+            while($row = mysql_fetch_assoc($result)){
+                if($row['type'] == 3){
+                    echo '&lt;div style="margin-bottom:20px;"&gt;' . random_custom_function($row['val']) . '&lt;/div&gt;';
+                    $i++;
+                } else {
+                    echo '&lt;div style="margin-bottom:20px;"&gt;' . $row['val'] . '&lt;/div&gt;';
+                }
+            }
+            if($i == 0){
+                echo 'Found none!';
+            }
+            </code>
+           </pre>
+        </section>
+
+        <section>
+            <h2>After all these fails <span
+                    class="fragment">I still want to convince you that PHP is a language worth learning!</span></h2>
+        </section>
+
+        <section>
+            <h2>Because PHP isn't the only language with (so many) flaws</h2>
+        </section>
+
+        <section>
+            <h2>Mythbusters - <span class="text-php-light">PHP EDITION</span></h2>
+        </section>
+
+        <section>
+            <h2>PHP sucks because there are so many crappy PHP programs</h2>
+            <aside class="notes">
+                No! A language doesn't suck because the programmers are bad.<br>
+                That'd be like a car sucks because the driver isn't good.
+            </aside>
+        </section>
+
+        <section>
+            <h1 class="text-red">BUSTED</h1>
+        </section>
+
+        <section>
+            <h2>PHP sucks because you should not mix HTML and business logic</h2>
+            <aside class="notes">
+                No! It's right that you shouldn't mix presentation and logic (Separation of Concern)<br>
+                But a good dev knows that, so you will not do this! (Frameworks)
+            </aside>
+        </section>
+
+        <section>
+            <h1 class="text-red">BUSTED</h1>
+        </section>
+
+        <section>
+            <h2>PHP is only good for web applications</h2>
+            <aside class="notes">
+                Yeah, likely that's true. But there are console applications, chatbot frameworks etc.
+            </aside>
+        </section>
+
+        <section>
+            <h1 class="text-green">PARTIALLY TRUE</h1>
+        </section>
+
+        <section>
+            <h2>PHP sucks because it's so slow</h2>
+
+            <div class="fragment">
+                <img src="assets/php_to_other_lang.png">
+                <p class="text-xs">http://www.zend.com/en/resources/php7_infographic</p>
+            </div>
+            <aside class="notes">
+                Correct in comparison to statically typed languages. But what are we doing: WEB STUFF<br>
+                In comparison to other dynamically typed languages
+            </aside>
+        </section>
+
+        <section>
+            <img class="w-3/4"
+                 src="https://upload.wikimedia.org/wikipedia/commons/2/21/Mandel_zoom_00_mandelbrot_set.jpg">
+            <p class="text-xs mb-2">Source:
+                https://upload.wikimedia.org/wikipedia/commons/2/21/Mandel_zoom_00_mandelbrot_set.jpg</p>
+        </section>
+
+        <section>
+            <h1 class="text-red">BUSTED</h1>
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Advantages of PHP</h1>
+        </section>
+
+        <section>
+            <h2>Stateless</h2>
+            <aside class="notes">
+                Every requests starts with a "blank state" (like HTTP)<br>
+                Bugs doesn't infect "whole system" when occuring
+            </aside>
+        </section>
+
+        <section>
+            <h2>Concurrency</h2>
+            <aside class="notes">
+                Every requests runs in a single thread! Safe, more resilient to error
+            </aside>
+        </section>
+
+
+        <section>
+            <h2>Dynamic typing</h2>
+            <aside class="notes">
+                Can be disadvantage, but if adhering to conventions and styles it's a blessing
+            </aside>
+        </section>
+
+        <section>
+            <h2>No compilation</h2>
+            <div class="fragment">
+                <img src="https://imgs.xkcd.com/comics/compiling.png">
+                <p class="text-xs">Source: https://xkcd.com/303/</p>
+            </div>
+            <aside class="notes">
+                No waiting times for compiling
+            </aside>
+        </section>
+
+        <section>
+            <h2>Large and helpful community</h2>
+            <aside class="notes">
+                5M+ active developers<br>
+                ~250M PHP applications and website
+            </aside>
+        </section>
+
+        <section>
+            <h2>Improvements over time</h2>
+            <div class="fragment">
+                <img src="assets/php_framework.png" class="w-3/4">
+                <p class="text-xs">Source: http://www.zend.com/en/resources/php7_infographic</p>
+            </div>
+            <aside class="notes">
+                There were even more flaws in the language but they've purged them. Also, nice speedup for 7.0<br>
+                PHP 7.2 is even faster!
+            </aside>
+        </section>
+
+        <section>
+            <h2>Great dependency manager</h2>
+            <div class="fragment">
+                <img class="bg-white border-none" src="assets/composer.png">
+                <p class="text-xs">Source: http://getcomposer.org/</p>
+            </div>
+            <aside class="notes">
+                Composer, similar to NPM (javascript), Maven etc.<br>
+                was missing for PHP long time!
+            </aside>
+        </section>
+
+        <section>
+            <h2>Language improvements</h2>
+            <aside class="notes">
+                PHP had issues in terms of security <br>
+                Inconsistencies are wiped out step by step <br>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Easy to develop</h2>
+            <aside class="notes">
+                laissez-fair<br>
+                easy to pick up for new developers <br>
+                Create a database connection within a few LOC <br>
+                procedural code -> refactor<br>
+                OOP, functional, procedural paradigms <br>
+                Flexible <br>
+                dynamical types <br>
+                Styleguides, code sniffer
+            </aside>
+        </section>
+
+        <section>
+            <h2>Easy to deploy</h2>
+            <aside class="notes">
+                Present on almost every web server <br>
+                Even shared hosting <br>
+                No SSH needed <br>
+                No compilation <br>
+                Rapid development
+            </aside>
+        </section>
+
+        <section>
+            <h2>Frameworks</h2>
+            <div class="mx-auto">
+                <img class="w-48 border-none shadow-none bg-white mx-2 fragment" src="assets/symfony.png">
+                <img class="w-48 border-none shadow-none bg-white mx-2 fragment" src="assets/yii.png">
+                <img class="w-48 border-none shadow-none bg-white mx-2 fragment" src="assets/laravel.png">
+                <img class="w-48 border-none shadow-none bg-white mx-2 fragment" src="assets/codeigniter.jpg">
+            </div>
+            <aside class="notes">
+                A lot of frameworks available <br>
+                Suitable for every dev
+            </aside>
+        </section>
+
+        <section>
+            <h2>Popularity of frameworks</h2>
+            <img class="fragment w-2/3" src="assets/interest_o_time.png">
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Laravel</h1>
+
+            <img class="border-none shadow-none bg-white" src="assets/laravel.png">
+        </section>
+
+        <section>
+            <h2>What is Laravel?</h2>
+
+            <ul>
+                <li class="fragment">PHP Framework</li>
+                <li class="fragment">Created 6 years ago by <span class="text-white">Taylor Otwell</span></li>
+                <li class="fragment">MVC Pattern</li>
+                <li class="fragment">Open source</li>
+                <li class="fragment">Many built-in features</li>
+                <li class="fragment">Oriented towards syntactic sugar</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>What makes it special?</h2>
+            <ul>
+                <li class="fragment underline text-red-light">Mature</li>
+                <li class="fragment">Huge eco system around it</li>
+                <li class="fragment underline text-green-light">Testable</li>
+                <li class="fragment">Easy to setup</li>
+                <li class="fragment">Great documentation 😍</li>
+                <li class="fragment">Support of major technologies</li>
+                <li class="fragment">A lot of stuff out of the box</li>
+            </ul>
+
+            <aside class="notes">
+                Major tech:
+                <ul>
+                    <li>Caching:Memcache, Redis</li>
+                    <li>Queues: Beanstalkd, Amazon SQS, Redis</li>
+                    <li>File storage: AWS (S3), Rackspace</li>
+                    <li>Databases: MySQL, PostgreSQL, SQLite, SQL Server</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Built-in stuff</h2>
+
+            <ul class="text-orange-light">
+                <li class="fragment">Authentication</li>
+                <li class="fragment">Routing</li>
+                <li class="fragment">Template language</li>
+                <li class="fragment">Jobs, Queues & Scheduling</li>
+                <li class="fragment">CLI</li>
+                <li class="fragment">Asset processing & versioning</li>
+                <li class="fragment">PHPUnit set up</li>
+                <li class="fragment">ORM (No more SQL! 😜)</li>
+                <li class="fragment">Notifications</li>
+                <li class="fragment">...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Community packages</h2>
+            <ul class="text-orange-light">
+                <li class="fragment">Registration with social network accounts</li>
+                <li class="fragment">OAuth</li>
+                <li class="fragment">Full text search</li>
+                <li class="fragment">Real time broadcasting</li>
+                <li class="fragment">Code statistics</li>
+                <li class="fragment">Debugbar</li>
+                <li class="fragment">...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Thats a lot of stuff!</h2>
+            <h2 class="fragment">And Laravel is performing well</h2>
+            <h2 class="fragment">Don't need that much?</h2>
+            <h2 class="fragment">Use <span class="text-php-light">Lumen</span> instead</h2>
+        </section>
+
+        <section>
+            <h2>Example - Form handling</h2>
+        </section>
+
+        <section>
+            <h2>Plain</h2>
+        </section>
+
+        <section class="w-full h-full">
+           <pre class="w-full m-0 h-full"><code class="php w-full m-0 h-auto p-0 min-h-full text-xs leading-normal"
+                                                data-trim
+                                                data-noescape>
+                $nameErr = $emailErr = $name = $email = "";
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  if (empty($_POST["name"])) {
+                    $nameErr = "Name is required";
+                  } else {
+                    $name = test_input($_POST["name"]);
+                    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+                      $nameErr = "Only letters and white space allowed";
+                    }
+                  }
+                  if (empty($_POST["email"])) {
+                    $emailErr = "Email is required";
+                  } else {
+                    $email = test_input($_POST["email"]);
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                      $emailErr = "Invalid email format";
+                    }
+                  }
+                }
+                echo json_encode(["name" => $name, "email" => $email]);
+
+                function test_input($data) {
+                  $data = trim($data);
+                  $data = stripslashes($data);
+                  $data = htmlspecialchars($data);
+                  return $data;
+                }
+            </code></pre>
+            <aside class="notes">
+                Src: https://www.w3schools.com/php/php_form_complete.asp
+            </aside>
+        </section>
+
+        <section>
+            <h2>Laravel</h2>
+        </section>
+
+
+        <section class="w-full h-full">
+           <pre class="w-full m-0 h-full"><code class="php w-full m-0 h-auto p-0 min-h-full text-xs" data-trim
+                                                data-noescape>
+            class BasicValidationRequest extends FormRequest
+            {
+
+                public function authorize()
+                {
+                    return true;
+                }
+
+                public function rules()
+                {
+                    return [
+                        "name" => "string|required|min:3|max:255",
+                        "email" => "string|required|email|min:3|max:255",
+                    ];
+                }
+            }
+            </code></pre>
+        </section>
+
+        <section class="w-full h-full">
+           <pre class="w-full m-0 h-full"><code class="php w-full m-0 h-auto p-0 min-h-full text-xs" data-trim
+                                                data-noescape>
+            class FormController extends Controller
+            {
+                public function results(Request $request)
+                {
+                    echo json_encode($request->all());
+                }
+            }
+            </code></pre>
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Tie up loose ends</h1>
+        </section>
+
+
+        <section>
+            <h2>Wasn't there something about market share?</h2>
+            <img class="border-none shadow-none" src="assets/market_share.png">
+        </section>
+
+        <section>
+            <h2>Reasons</h2>
+            <ul>
+                <li class="fragment">Partly legacy/old websites</li>
+                <li class="fragment">Wordpress, Drupal, Joomla...</li>
+                <li class="fragment">Business-critical applications (not the major part though)</li>
+            </ul>
+
+            <aside class="notes">
+                74.6 Million Sites Depend on WordPress<br>
+                Src: https://managewp.com/14-surprising-statistics-about-wordpress-usage
+            </aside>
+        </section>
+
+        <section>
+            <h3>Is PHP useful for enterprise-level apps?</h3>
+
+            <h2 class="fragment text-green">YES! 🎉</h2>
+            <h4 class="fragment">But it depends on the use case</h4>
+        </section>
+
+        <section>
+            <h3>Is PHP dying?</h3>
+
+            <h2 class="fragment text-green">NO! 🎉</h2>
+            <aside class="notes">
+                No! More and more languages are coming<br>
+                “About 10 years ago, the first 8 languages covered 80 percent of the market, now this is reduced to
+                55 percent.”<br>
+                Src: https://insights.dice.com/2016/06/07/top-programming-languages-losing-market-share/
+            </aside>
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Conclusion</h1>
+            <ul>
+                <li class="fragment">Use PHP as a 🔨 in your tool belt</li>
+                <li class="fragment">PHP does not suck <span class="fragment">(as much as everyone think)!</span></li>
+                <li class="fragment">Inconsistencies are still there, but will vanish over time</li>
+                <li class="fragment">Great backend language</li>
+                <li class="fragment">Take it <strong>SERIOUS</strong></li>
+                <li class="fragment">Frameworks and Composer <em>revived</em> PHP</li>
+            </ul>
+
+            <aside class="notes">
+                <ul>
+                    <li>Wide usage possible</li>
+                    <li>But consider other programming languages as well!</li>
+                    <li>Example: PHP for Machine Learning (DAFUQ)</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h2 class="text-php-light">Some nice links</h2>
+
+            <ul class="text-sm">
+                <li class="fragment">
+                    Slides: <a href="https://github.com/manniL/php-is-dead-long-live-php" class="text-indigo-lighter"
+                >https://github.com/manniL/php-is-dead-long-live-php</a>
+                </li>
+                <li class="fragment">
+                    <a href="http://adventofcode.com/" class="text-indigo-lighter">AdventOfCode</a> - A programming
+                    advent calendar
+                </li>
+                <li class="fragment">
+                    PHP Lesson Slides maintained by me:
+                    <a href="https://github.com/fsr/php-lessons" class="text-indigo-lighter">https://github.com/fsr/php-lessons</a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Thanks for your attention!</h1>
+        </section>
+
+        <section>
+            <h1 class="text-php-light">Questions?</h1>
+        </section>
+    </div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="lib/js/reveal.js"></script>
+
+<script>
+  // More info about config & dependencies:
+  // - https://github.com/hakimel/reveal.js#configuration
+  // - https://github.com/hakimel/reveal.js#dependencies
+  Reveal.initialize({
+    dependencies: [
+      {src: 'plugin/markdown/marked.js'},
+      {src: 'plugin/markdown/markdown.js'},
+      {src: 'plugin/notes/notes.js', async: true},
+      {
+        src: 'plugin/highlight/highlight.js',
+        async: true,
+        callback: function () { hljs.initHighlightingOnLoad() }
+      }
+    ],
+    history: true,
+    slideNumber: true,
+  })
+</script>
+<script type="text/javascript" src="app.83d461735add09821a43.js"></script></body>
+</html>
