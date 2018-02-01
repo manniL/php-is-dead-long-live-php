@@ -1,5 +1,7 @@
 # PHP is dead - Long live PHP
 
+![Travis CI](https://api.travis-ci.org/manniL/php-is-dead-long-live-php.svg?branch=master)
+
 Welcome to the repository of my first talk!
 Take a look at the Reveal.js slides and be sure to create a PR if you notice something weird.
 
